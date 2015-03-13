@@ -8,11 +8,11 @@
 
 #import "QuadCurveMenu.h"
 #import <QuartzCore/QuartzCore.h>
-
+#define Height (kScreenHeight==568?544:456)
 #define NEARRADIUS 100.0f
 #define ENDRADIUS 110.0f
 #define FARRADIUS 160.0f
-#define STARTPOINT CGPointMake(160, 544)
+#define STARTPOINT CGPointMake(160, Height)
 #define TIMEOFFSET 0.026f
 
 
@@ -183,6 +183,10 @@
     // exclude the "add" button
     if (item == _addButton) 
     {
+        if(!self.expanding){
+            self.bgView.backgroundColor = [UIColor clearColor];
+            self.bgView.alpha = 0;
+        }
         return;
     }
     // blowup the selected menu button
